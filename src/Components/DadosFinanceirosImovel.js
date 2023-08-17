@@ -38,7 +38,7 @@ function DadosFinanceirosImovel({ formData, setFormData }) {
               <option>Selecione...</option>
               <option value="1">Locação</option>
               <option value="2">Venda</option>
-              <option value="3">Aberto a negociação</option>
+              <option value="3">Ambos</option>
             </Form.Select>
           </FloatingLabel>
         </Col>
@@ -46,31 +46,22 @@ function DadosFinanceirosImovel({ formData, setFormData }) {
       <br />
       
       <Row>
+
         <Col md>
           <InputGroup className="mb-3">
             <InputGroup.Text>R$</InputGroup.Text>
-            <Form.Control id="valorMinimo" placeholder="Valor Mínimo" value={formData.valorMinimo} 
+            <Form.Control id="valorExibidoSite" placeholder="Valor do imóvel." value={formData.valorExibidoSite} 
+              onChange={(event) => setFormData({...formData, valorExibidoSite: event.target.value })} />
+          </InputGroup>
+        </Col>
+        <Col md>
+          <InputGroup className="mb-3">
+            <InputGroup.Text>R$</InputGroup.Text>
+            <Form.Control id="valorMinimo" placeholder="Valor mínimo de negocição." value={formData.valorMinimo} 
               onChange={(event) => setFormData({...formData, valorMinimo: event.target.value })} />
           </InputGroup>
         </Col>
 
-        <Col md>
-          <InputGroup className="mb-3">
-            <InputGroup.Text>R$</InputGroup.Text>
-            <Form.Control id="valorMaximo" placeholder="Valor Máximo" value={formData.valorMaximo} 
-              onChange={(event) => setFormData({...formData, valorMaximo: event.target.value })} />
-          </InputGroup>
-        </Col>
-      </Row>
-
-      <Row>
-        <Col md>
-          <InputGroup className="mb-3">
-            <InputGroup.Text>R$</InputGroup.Text>
-            <Form.Control id="valorExibidoSite" placeholder="Valor a ser exibido no site" value={formData.valorExibidoSite} 
-              onChange={(event) => setFormData({...formData, valorExibidoSite: event.target.value })} />
-          </InputGroup>
-        </Col>
       </Row>
 
       <Row>

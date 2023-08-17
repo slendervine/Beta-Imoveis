@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Button, Col, Row } from 'react-bootstrap';
 
@@ -8,25 +10,34 @@ import CaracteristicaImovelInfo from './CaracteristicasImovel/CaracteristicasImo
 import SandboxInfo from './Sandbox.js';
 
 
-function handleClick(dataFormulario) {
-    
-    console.log("clicks")
-    // Send data to the backend via POST
-    fetch('http://localhost:1900/textos/', {  // Enter your IP address here
-
-      method: 'GET', 
-      mode: 'cors', 
-
-    })
-
-}
 
 function MeuForm(){
     const [page, setPage]           = useState(0);
     const [progress, setProgress]   = useState(0);
-    const [formData, setFormData]   = useState({
+    const [formData, setFormData]   = useState({});
+    const [post, setPost]           = React.useState(null);
 
-    });
+    const baseURL = "https://localhost:1900/sandbox"
+    
+    function createPost() {
+        axios
+          .post(baseURL, {
+            title: "Hello World!",
+            body: formData
+        })
+          .then((response) => {
+            setPost(response.data);
+        });
+    }
+
+    React.useEffect(() => {
+        axios.get(baseURL).then((recordset) => {
+          setPost(recordset.recordset);
+
+          console.log(post)
+        });
+    }, []);
+    
     
 
     
@@ -83,6 +94,7 @@ function MeuForm(){
                                 onClick={() => {
                                     if(page === FormTitulos.length - 1){
                                         console.log(formData);
+                                        createPost(formData)
                                     } else {
                                         setPage((currPage)      => currPage + 1);
                                         setProgress((progress)  => progress + 33,3);

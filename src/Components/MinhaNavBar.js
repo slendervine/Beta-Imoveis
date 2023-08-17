@@ -8,25 +8,27 @@ function MinhaNavBar() {
     return ( 
     <Navbar bg="light" expand="lg" sticky="top">
         <Container>
-            <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+            <Navbar.Brand href="/">Beta ERP</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#link">Link</Nav.Link>
-                <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                    <NavDropdown.Item href="#action/3.1">
+                <Nav.Link href="/">Home</Nav.Link>
+                <NavDropdown title="Consulta" id="basic-nav-dropdown">
+                    <NavDropdown.Item href="/consulta_imoveis">
                         Imoveis
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">
-                        Imoveis Cadastrados
+                </NavDropdown>
+
+                <NavDropdown title="Cadastrar" id="basic-nav-dropdown">
+                    <NavDropdown.Item href="/cadastra_imovel">
+                        Novo Imóvel
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">
-                            Cadastrar novo Imovel
+                    <NavDropdown.Item href="#action/3.2">
+                        Novo Condomínio
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.4">
-                        Ainda nada
+                    <NavDropdown.Item href="#">
+                        Novo Usuário
                     </NavDropdown.Item>
                 </NavDropdown>
                 </Nav>

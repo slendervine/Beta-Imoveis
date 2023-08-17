@@ -32,6 +32,7 @@ function FormApartamento({ formData, setFormData }) {
                             checked = {formData.checkboxCondominio}/>
 
                         <Form.Control id="nomeCondominio" aria-label="Text input with checkbox" 
+                            onChange={(event) => setFormData({...formData, nomeCondominio: event.target.value })}
                             disabled    = {!formData.checky} 
                             placeholder = "Ex: Condomínio Palaza"/>                
                     </InputGroup>
