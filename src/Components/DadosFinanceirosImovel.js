@@ -1,8 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 import { Form, FloatingLabel, Row, Col, InputGroup, DropdownButton, Dropdown } from 'react-bootstrap';
+import InputMask from 'react-input-mask';
+import { useState } from 'react';
 
-function formaContatoImovel(id){
+function formaContatoImovel(id, value, formData, setDescInputTipoImovel){
 
     var placeholder = "";
   
@@ -17,17 +19,27 @@ function formaContatoImovel(id){
       default:
         placeholder = "";
     }
+
+    formData.ID_formaContatoImovel = value
+    console.log(formData.ID_formaContatoImovel)
   
     const inputAlterado       = document.querySelector("#Input_formaContatoImovel")
   
     inputAlterado.placeholder = placeholder
     inputAlterado.removeAttribute("disabled");
-    inputAlterado.value = "";
     inputAlterado.focus();
+
+
+    setDescInputTipoImovel(id)
   
 }
 
 function DadosFinanceirosImovel({ formData, setFormData }) {
+
+    const [descInputTipoImovel, setDescInputTipoImovel] = useState("Contato")
+
+
+
     return ( 
       <>
       <Row>
@@ -51,14 +63,18 @@ function DadosFinanceirosImovel({ formData, setFormData }) {
           <InputGroup className="mb-3">
             <InputGroup.Text>R$</InputGroup.Text>
             <Form.Control id="valorExibidoSite" placeholder="Valor do imóvel." value={formData.valorExibidoSite} 
-              onChange={(event) => setFormData({...formData, valorExibidoSite: event.target.value })} />
+              onChange={(event) => setFormData({...formData, valorExibidoSite: event.target.value })} 
+              as={InputMask}
+              mask="9.999,99"/>
           </InputGroup>
         </Col>
         <Col md>
           <InputGroup className="mb-3">
             <InputGroup.Text>R$</InputGroup.Text>
             <Form.Control id="valorMinimo" placeholder="Valor mínimo de negocição." value={formData.valorMinimo} 
-              onChange={(event) => setFormData({...formData, valorMinimo: event.target.value })} />
+              onChange={(event) => setFormData({...formData, valorMinimo: event.target.value })} 
+              as={InputMask}
+              mask="9.999,99"/>
           </InputGroup>
         </Col>
 
@@ -67,16 +83,15 @@ function DadosFinanceirosImovel({ formData, setFormData }) {
       <Row>
         <Col>
           <InputGroup className="mb-3">
-            <DropdownButton  value={formData.ID_formaContatoImovel}
+            <DropdownButton 
               variant="outline-secondary"
-              title="Contato para venda"
-              id="ID_formaContatoImovel" hadlerinput
-              onChange={(event) => setFormData({...formData, ID_formaContatoImovel: event.target.value })}
+              title={formData.titleFormaContatoImovel}
+              id="ID_formaContatoImovel" 
             >
-              <Dropdown.Item id="celular" onClick={e => formaContatoImovel(e.target.id)}>Celular</Dropdown.Item>
-              <Dropdown.Item id="email"   onClick={e => formaContatoImovel(e.target.id)}>E-mail</Dropdown.Item>
+              <Dropdown.Item id="Celular" value="1" onClick={(e) =>  setFormData({...formData, ID_formaContatoImovel: e.target.id,  ...formData, titleFormaContatoImovel: e.target.id, formData, placeholderFormaContatoImovel: "(00)0 0000-0000"})}>Celular</Dropdown.Item>
+              <Dropdown.Item id="Email"   value="2" onClick={(e) =>  setFormData({...formData, ID_formaContatoImovel: e.target.id,  ...formData, titleFormaContatoImovel: e.target.id, formData, placeholderFormaContatoImovel: "exemplo@exemplo.com"})}>E-mail</Dropdown.Item>
             </DropdownButton>
-            <Form.Control aria-label="Text input with dropdown button" id="Input_formaContatoImovel"  placeholder="Selecione o tipo de contato para venda" disabled value={formData.Input_formaContatoImovel}
+            <Form.Control aria-label="Text input with dropdown button" id="Input_formaContatoImovel"  placeholder={formData.placeholderFormaContatoImovel} disabled={formData.ID_formaContatoImovel === undefined} value={formData.Input_formaContatoImovel}
               onChange={(event) => setFormData({...formData, Input_formaContatoImovel: event.target.value })} />
               
             <Form.Control aria-label="Aos cuidados de:" id="Input_nomeContatoImovel"   placeholder="Aos cuidados de:" value={formData.Input_nomeContatoImovel} 

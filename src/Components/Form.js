@@ -14,7 +14,10 @@ import SandboxInfo from './Sandbox.js';
 function MeuForm(){
     const [page, setPage]           = useState(0);
     const [progress, setProgress]   = useState(0);
-    const [formData, setFormData]   = useState({});
+    const [formData, setFormData]   = useState({
+        placeholderFormaContatoImovel: "Selecione o tipo de contato.",
+        titleFormaContatoImovel: "Contato"
+    });
     const [post, setPost]           = React.useState(null);
 
     const baseURL = "https://localhost:1900/sandbox"
@@ -41,7 +44,7 @@ function MeuForm(){
     
 
     
-    const FormTitulos = ["Dados Financeiros do Imóvel", "Características do Imóvel", "Localização do Imóvel", "SANDBOX"];
+    const FormTitulos = ["Dados Financeiros do Imóvel", "Características do Imóvel", "Localização do Imóvel"];
 
     const Display = () => {
 
