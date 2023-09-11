@@ -31,9 +31,6 @@ function CaracteristicaImovel({ formData, setFormData }) {
             <Nav.Item>
               <Nav.Link eventKey="dimensaoImovel">Dimensões</Nav.Link>
             </Nav.Item>
-            <Nav.Item>
-              <Nav.Link eventKey="adicionaisImovel">Adicionais</Nav.Link>
-            </Nav.Item>
           </Nav>
         </Col>
 
@@ -49,10 +46,6 @@ function CaracteristicaImovel({ formData, setFormData }) {
 
             <Tab.Pane eventKey="dimensaoImovel">
               <TabDimensoesInfo formData={formData} setFormData={setFormData}/>
-            </Tab.Pane>
-
-            <Tab.Pane eventKey="adicionaisImovel">
-              <TabAdicionaisImovelInfo formData={formData} setFormData={setFormData}/>
             </Tab.Pane>
           </Tab.Content>
         </Col>

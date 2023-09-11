@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import api from "../services/api";
-import { Card, Form, Row, Col, Button, Table, Stack, InputGroup, DropdownButton, Dropdown } from "react-bootstrap";
+import { Card, Form, Row, Col, Button, Table, Stack, InputGroup, DropdownButton, Dropdown, FloatingLabel } from "react-bootstrap";
 
-function Selectarametrado({metodo, label}) {
+function SelectParametrado({metodo, label, tipoLabel}) {
 
     const [recordset, setRecordset] = React.useState(null);
 
@@ -22,18 +22,37 @@ function Selectarametrado({metodo, label}) {
     if (!recordset) return null;
     const retornoAPI = recordset?.recordset
 
+    
 
     return ( 
         <>
-        <Form.Label>{label}</Form.Label>
-        <Form.Select size="sm">
-            {retornoAPI.map(retornoAPI => 
-                <option value={retornoAPI.ID_FINALIDADE_IMOVEL}>{retornoAPI.DESCRICAO}</option>
-            )} 
-        </Form.Select>
+        {tipoLabel == "normal" && 
+            <div>
+                <Form.Label>{label}</Form.Label>
+                <Form.Select size="sm">
+                    <option value="0">Selecione...</option>
+                    {retornoAPI.map(retornoAPI => 
+                        <option value={retornoAPI.Id}>{retornoAPI.Descricao}</option>
+                    )} 
+                </Form.Select>
+            </div>
+        }
+
+        {tipoLabel == "float" && 
+            <div>
+                <FloatingLabel label={label}>
+                <Form.Select id="imovelUF">
+                    <option value="0">Selecione...</option>
+                    {retornoAPI.map(retornoAPI => 
+                        <option value={retornoAPI.Id}>{retornoAPI.Descricao}</option>
+                    )} 
+                </Form.Select>
+                </FloatingLabel>
+            </div>
+        }
         </>
   
   )};
 
 
-  export default Selectarametrado;
+  export default SelectParametrado;

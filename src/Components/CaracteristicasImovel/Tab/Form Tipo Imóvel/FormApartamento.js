@@ -5,11 +5,23 @@ import React, { useState } from 'react';
 
 function FormApartamento({ formData, setFormData }) {
 
-    const [checkCondominio, setCheckCondominio]           = useState(false);
+    function alteraCheckboxCondominio(statusCheck) { 
 
-    const handleChange = () => { 
-        setFormData({...formData, checkboxCondominio: !checkCondominio })
-        setCheckCondominio(!checkCondominio); 
+        if(statusCheck){
+
+            setFormData({...formData, 
+                checkboxCondominio: statusCheck,
+                nomePredio: "" 
+            })
+
+        }else{
+
+            setFormData({...formData, 
+                checkboxCondominio: statusCheck,
+                nomeCondominio: "" 
+            })
+        }
+
     }; 
 
     return ( 
@@ -19,7 +31,7 @@ function FormApartamento({ formData, setFormData }) {
                     <Form.Label>Nome do Prédio</Form.Label>
                     <Form.Control id="nomePredio" aria-label="Text input with checkbox" value={formData.nomePredio} 
                         onChange={(event) => setFormData({...formData, nomePredio: event.target.value })}
-                        disabled    = {formData.checky} 
+                        disabled    = {formData.checkboxCondominio} 
                         placeholder = "Ex: Mar Ligúria"
                     />                
                 </Col>
@@ -28,13 +40,15 @@ function FormApartamento({ formData, setFormData }) {
                     <Form.Label>Condomínio</Form.Label>
                     <InputGroup className="mb-3">
                         <InputGroup.Checkbox id="checkCondominio" aria-label="Checkbox for following text input"
-                            onChange = { (event) => handleChange }  
-                            checked = {formData.checkboxCondominio}/>
+                            onChange={ (e) => alteraCheckboxCondominio(e.target.checked) }
+                            checked = {formData.checkboxCondominio}
+                        />
 
-                        <Form.Control id="nomeCondominio" aria-label="Text input with checkbox" 
+                        <Form.Control id="nomeCondominio" aria-label="Text input with checkbox" value={formData.nomeCondominio}
                             onChange={(event) => setFormData({...formData, nomeCondominio: event.target.value })}
-                            disabled    = {!formData.checky} 
-                            placeholder = "Ex: Condomínio Palaza"/>                
+                            disabled    = {!formData.checkboxCondominio} 
+                            placeholder = "Ex: Condomínio Palaza"
+                        />                
                     </InputGroup>
                 </Col>
             </Row>

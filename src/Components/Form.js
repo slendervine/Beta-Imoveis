@@ -16,8 +16,12 @@ function MeuForm(){
     const [progress, setProgress]   = useState(0);
     const [formData, setFormData]   = useState({
         placeholderFormaContatoImovel: "Selecione o tipo de contato.",
-        titleFormaContatoImovel: "Contato"
+        titleFormaContatoImovel: "Contato",
+        nomePredio: "",
+        nomeCondominio: "",
+        checkboxCondominio: false
     });
+    
     const [post, setPost]           = React.useState(null);
 
     const baseURL = "https://localhost:1900/sandbox"
@@ -32,17 +36,6 @@ function MeuForm(){
             setPost(response.data);
         });
     }
-
-    React.useEffect(() => {
-        axios.get(baseURL).then((recordset) => {
-          setPost(recordset.recordset);
-
-          console.log(post)
-        });
-    }, []);
-    
-    
-
     
     const FormTitulos = ["Dados Financeiros do Imóvel", "Características do Imóvel", "Localização do Imóvel"];
 

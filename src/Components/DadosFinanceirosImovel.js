@@ -44,7 +44,7 @@ function DadosFinanceirosImovel({ formData, setFormData }) {
       <>
       <Row>
         <Col md>
-          <FloatingLabel controlId="floatingSelect" label="Qual a pretenção para o imovel?">
+          <FloatingLabel  label="Qual a pretenção para o imovel?">
             <Form.Select id="aluguelOuVendaImovel" aria-label="Qual a pretenção para o imovel?" value={formData.aluguelOuVendaImovel} 
               onChange={(event) => setFormData({...formData, aluguelOuVendaImovel: event.target.value })}>
               <option>Selecione...</option>
@@ -102,7 +102,7 @@ function DadosFinanceirosImovel({ formData, setFormData }) {
 
       <Row>
         <Col>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+          <Form.Group className="mb-3">
             <Form.Label>Observações Financeiras</Form.Label>
             <Form.Control id="obsFinanceiras" as="textarea" rows={3} value={formData.obsFinanceiras} 
                onChange={(event) => setFormData({...formData, obsFinanceiras: event.target.value })}/>

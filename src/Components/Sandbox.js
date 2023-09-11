@@ -10,19 +10,19 @@ function Sandbox({ formData, setFormData }) {
         <>
         <Row className="g-2">
           <Col md>
-            <FloatingLabel controlId="TituloSandbox" label="Título">
+            <FloatingLabel  label="Título">
               <Form.Control id="imovelCep" type="text"  value={formData.TituloSandbox} 
                 onChange={(event) => setFormData({...formData, TituloSandbox: event.target.value })} />
             </FloatingLabel>
           </Col>
           <Col md>
-            <FloatingLabel controlId="autorSandbox" label="Autor">
+            <FloatingLabel  label="Autor">
               <Form.Control id="imovelNumero" type="text" placeholder="1846" value={formData.autorSandbox} 
                 onChange={(event) => setFormData({...formData, autorSandbox: event.target.value })} />
             </FloatingLabel>
           </Col>
           <Col md>
-            <FloatingLabel controlId="categoriaSandbox" label="Categoria">
+            <FloatingLabel label="Categoria">
               <Form.Select id="imovelUF" aria-label="Floating label select example" value={formData.categoriaSandbox}
                 onChange={(e) => setFormData({...formData, categoriaSandbox: e.target.value } ) }
               >
@@ -38,7 +38,7 @@ function Sandbox({ formData, setFormData }) {
 
         <Row className="g-2">
         <Col>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+          <Form.Group className="mb-3" >
             <Form.Label>Text Sandbox né</Form.Label>
             <Form.Control id="textoSandbox" as="textarea" rows={3} value={formData.textoSandbox} 
                onChange={(event) => setFormData({...formData, textoSandbox: event.target.value })}/>

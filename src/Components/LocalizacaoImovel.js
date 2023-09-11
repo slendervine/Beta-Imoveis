@@ -1,29 +1,78 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
-import { Form, FloatingLabel, Row, Col } from 'react-bootstrap';
+import { Form, FloatingLabel, Row, Col, Button } from 'react-bootstrap';
+import { getCep } from '../api/getCep';
+import { getEstados } from '../api/getEstados';
+import { useEffect } from 'react';
+import api from '../services/api';
+import SelectParametrado from '../Options/SelectParametrado';
 
 
 
 
 function LocalizacaoImovel({ formData, setFormData }) {
+
+    
+
+    async function buscaCEP(cep){
+
+      
+      cep = cep.replace('-', '')
+      //setFormData({...formData, imovelCep: cep })
+      
+      if(cep.length == 8){
+        
+        const enderecoCompleto = await getCep(cep)
+        const erro = enderecoCompleto.data.erro;
+
+        if(erro){
+
+          alert("CEP não encontrado!")
+
+          setFormData({ ...formData,
+            imovelCep: "",
+            imovelBairro: "",
+            imovelCidade: "",
+            imovelEndereco: "",
+          })
+
+          document.getElementById("imovelCep").focus()
+
+        }else{
+
+          setFormData({ ...formData,
+            imovelCep: cep,
+            imovelBairro: enderecoCompleto.data.bairro,
+            imovelCidade: enderecoCompleto.data.localidade,
+            imovelEndereco: enderecoCompleto.data.logradouro,
+          })
+
+          document.getElementById("imovelNumero").focus()
+        }
+
+      }
+
+    }
+
+
     return ( 
         <>
         <Row className="g-2">
           <Col md>
-            <FloatingLabel controlId="labelImovelCep" label="CEP">
-              <Form.Control id="imovelCep" type="text" placeholder="00000-000" value={formData.labelImovelCep} 
-                onChange={(event) => setFormData({...formData, labelImovelCep: event.target.value })} />
+            <FloatingLabel label="CEP">
+              <Form.Control id="imovelCep" type="text" value={formData.imovelCep} 
+                onChange={(event) => buscaCEP(event.target.value)} />
             </FloatingLabel>
           </Col>
           <Col md>
-            <FloatingLabel controlId="labelImovelNumero" label="Número">
-              <Form.Control id="imovelNumero" type="text" placeholder="1846" value={formData.labelImovelNumero} 
+            <FloatingLabel label="Número">
+              <Form.Control id="imovelNumero" type="text" value={formData.imovelNumero} 
                 onChange={(event) => setFormData({...formData, labelImovelNumero: event.target.value })} />
             </FloatingLabel>
           </Col>
           <Col md>
-            <FloatingLabel controlId="labelImovelComplemento" label="Complemento">
-              <Form.Control id="imovelComplemento" type="text" placeholder="00000-000" value={formData.labelImovelComplemento} 
+            <FloatingLabel label="Complemento">
+              <Form.Control id="imovelComplemento" type="text" value={formData.imovelComplemento} 
                 onChange={(event) => setFormData({...formData, labelImovelComplemento: event.target.value })} />
             </FloatingLabel>
           </Col>
@@ -32,25 +81,28 @@ function LocalizacaoImovel({ formData, setFormData }) {
 
         <Row className="g-2">
           <Col md>
-            <FloatingLabel controlId="labelImovelBairro" label="Bairro" >
-              <Form.Control id="imovelBairro" type="text" value={formData.labelImovelBairro} 
-                onChange={(event) => setFormData({...formData, labelImovelBairro: event.target.value })} />
+            <FloatingLabel label="Bairro" >
+              <Form.Control id="imovelBairro" type="text" value={formData.imovelBairro} 
+                onChange={(event) => setFormData({...formData, imovelBairro: event.target.value })} />
             </FloatingLabel>
           </Col>
           <Col md>
-            <FloatingLabel controlId="labelImovelCidade" label="Cidade">
-              <Form.Control id="imovelCidade" type="text" value={formData.labelImovelCidade} 
-                onChange={(event) => setFormData({...formData, labelImovelCidade: event.target.value })}/>
+            <FloatingLabel label="Cidade">
+              <Form.Control id="imovelCidade" type="text" value={formData.imovelCidade} 
+                onChange={(event) => setFormData({...formData, imovelCidade: event.target.value })}/>
             </FloatingLabel>
           </Col>
           <Col md>
-            <FloatingLabel controlId="labelImovelUF" label="Estado">
-              <Form.Select id="imovelUF" aria-label="Floating label select example">
-                <option>Selecione...</option>
-                <option value="1">São Paulo</option>
-                <option value="2">Rio Grande do Sul</option>
-                <option value="3">Rio de Janeiro</option>
-              </Form.Select>
+            <SelectParametrado metodo="SELECT_ESTADOS" label="Estado" tipoLabel="float"/>
+          </Col>
+        </Row>
+        <br />
+
+        <Row className="g-2">
+          <Col md>
+            <FloatingLabel label="Endereco">
+              <Form.Control id="imovelEndereco" type="text" value={formData.imovelEndereco} 
+                onChange={(event) => setFormData({...formData, imovelEndereco: event.target.value })} />
             </FloatingLabel>
           </Col>
         </Row>

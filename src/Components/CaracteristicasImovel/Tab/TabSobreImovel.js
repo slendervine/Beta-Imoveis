@@ -36,6 +36,50 @@ function LimpaCamposTipoImovel(formData){
 
 function TabSobreImovel({ formData, setFormData }) {
 
+    function alteraTipoImovel(tipoImovel){
+
+        if(tipoImovel == 1){
+            
+            setFormData({ ...formData,
+                formSobreImovel: tipoImovel,
+                nomePredio: "",
+                nomeCondominio: "",
+                checkboxCondominio: false,
+                checkSalaoFesta: false,
+                checkPiscina: false,
+                checkPortaria: false,
+                checkElevador: false,
+            })
+
+        }
+
+        if(tipoImovel == 2){
+            
+            setFormData({ ...formData,
+                formSobreImovel: tipoImovel,
+            })
+
+        }
+
+        if(tipoImovel == 3){
+            
+            setFormData({ ...formData,
+                formSobreImovel: tipoImovel,
+                nomePredio: "",
+                nomeCondominio: "",
+                checkboxCondominio: false,
+                checkSalaoFesta: false,
+                checkPiscina: false,
+                checkPortaria: false,
+                checkElevador: false,
+            })
+
+        }
+
+
+
+    }
+
     const Display = (formDataSelecionado, { formData, setFormData } ) => {
 
         if(formDataSelecionado === "0"){
@@ -58,12 +102,9 @@ function TabSobreImovel({ formData, setFormData }) {
 
     return ( 
         <>  
-            <FloatingLabel controlId="floatingSelect" label="Qual o tipo do imóvel?">
+            <FloatingLabel label="Qual o tipo do imóvel?">
                 <Form.Select id="formSobreImovel" name="formSobreImovel" aria-label="Qual o tipo do imóvel?" value={formData.formSobreImovel} 
-                    onChange={
-                        (e) => {setFormData({...formData, formSobreImovel: e.target.value });
-                                LimpaCamposTipoImovel({})
-                    }}
+                    onChange={ (e) => alteraTipoImovel(e.target.value) }
                 >
                     <option>Selecione...</option>
                     <option value="1">Casa</option>

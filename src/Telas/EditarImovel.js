@@ -89,7 +89,7 @@ function EditarImovel() {
                                 
 
                                 <div>
-                                    <SelectParametrado metodo="SELECT_FINALIDADE_IMOVEL" label="Finalidade do Imóvel"/>
+                                    <SelectParametrado metodo="SELECT_FINALIDADE_IMOVEL" label="Finalidade do Imóvel" tipoLabel="normal"/>
                                 </div>
 
                                 <div>
@@ -195,48 +195,48 @@ function EditarImovel() {
                         <Stack direction="horizontal" gap={3}>
                             <Stack direction="vertical" gap={3} className="col-md-4">
                                 <div>
-                                    <Form.Group className="mb-1" controlId="formBasicEmail">
+                                    <Form.Group className="mb-1" >
                                         <Form.Label>CEP</Form.Label>
                                         <Form.Control type="text"/>
                                     </Form.Group>
                                 </div>
 
                                 <div>
-                                    <Form.Group className="mb-1" controlId="formBasicEmail">
+                                    <Form.Group className="mb-1" >
                                         <Form.Label>Número</Form.Label>
                                         <Form.Control type="text"/>
                                     </Form.Group>
                                 </div>
 
                                 <div>
-                                    <Form.Group className="mb-1" controlId="formBasicEmail">
+                                    <Form.Group className="mb-1" >
                                         <Form.Label>Logradouro</Form.Label>
                                         <Form.Control type="text"/>
                                     </Form.Group>
                                 </div>
 
                                 <div>
-                                    <Form.Group className="mb-1" controlId="formBasicEmail">
+                                    <Form.Group className="mb-1" >
                                         <Form.Label>Complemento</Form.Label>
                                         <Form.Control type="text"/>
                                     </Form.Group>
                                 </div>
 
                                 <div>
-                                    <Form.Group className="mb-1" controlId="formBasicEmail">
+                                    <Form.Group className="mb-1" >
                                         <Form.Label>Bairro</Form.Label>
                                         <Form.Control type="text"/>
                                     </Form.Group>
                                 </div>
 
                                 <div>
-                                    <Form.Group className="mb-1" controlId="formBasicEmail">
+                                    <Form.Group className="mb-1" >
                                         <Form.Label>Cidade</Form.Label>
                                         <Form.Control type="text"/>
                                     </Form.Group>
                                 </div>
                                 <div>
-                                    <Form.Group className="mb-1" controlId="formBasicEmail">
+                                    <Form.Group className="mb-1" >
                                         <Form.Label>Estado</Form.Label>
                                         <Form.Select size="sm">
                                             <option>Rio Grande do Sul</option>

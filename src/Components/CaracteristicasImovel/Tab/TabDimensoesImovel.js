@@ -5,7 +5,7 @@ function TabComodos({ formData, setFormData }) {
     return ( 
         <>
         <Row className="mb-1">
-            <Form.Group as={Col} controlId="formGridEmail">
+            <Form.Group as={Col}>
                 <Form.Label>Material</Form.Label>
                 <Form.Select id="materialImovel" aria-label="Material" value={formData.materialImovel} 
                 onChange={(event) => setFormData({...formData, materialImovel: event.target.value })}>
@@ -15,7 +15,7 @@ function TabComodos({ formData, setFormData }) {
                 </Form.Select>
             </Form.Group>
 
-            <Form.Group as={Col} controlId="formGridEmail">
+            <Form.Group as={Col} >
                 <Form.Label>Tamanho Terreno</Form.Label>
                 <InputGroup className="mb-3">
                     <Form.Control id="tamanhoTerreno" value={formData.tamanhoTerreno}
@@ -28,7 +28,7 @@ function TabComodos({ formData, setFormData }) {
                 </InputGroup>
             </Form.Group>
 
-            <Form.Group as={Col} controlId="formGridEmail">
+            <Form.Group as={Col}>
                 <Form.Label>Tamanho Área Construída</Form.Label>
                 <InputGroup className="mb-3">
                     <Form.Control id="tamanhoAreaConstruida" value={formData.tamanhoAreaConstruida}
