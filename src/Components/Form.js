@@ -24,12 +24,11 @@ function MeuForm(){
     
     const [post, setPost]           = React.useState(null);
 
-    const baseURL = "https://localhost:1900/sandbox"
+    const baseURL = "https://localhost:1900/imovel/cadastrar"
     
     function createPost() {
         axios
           .post(baseURL, {
-            title: "Hello World!",
             body: formData
         })
           .then((response) => {

@@ -6,13 +6,29 @@ import { getEstados } from '../api/getEstados';
 import { useEffect } from 'react';
 import api from '../services/api';
 import SelectParametrado from '../Options/SelectParametrado';
+import React from 'react';
 
 
 
 
 function LocalizacaoImovel({ formData, setFormData }) {
 
-    
+    const [recordset, setRecordset] = React.useState(null);
+
+    useEffect(() => {
+        api
+            .get(`http://localhost:1900/select_options/SELECT_ESTADOS`)
+            .then((response) => {
+                setRecordset(response.data)
+            })
+          .catch((err) => {
+            console.error("ops! ocorreu um erro" + err);
+          });
+
+    },  []);
+
+    if (!recordset) return null;
+    const retornoAPI = recordset?.recordset
 
     async function buscaCEP(cep){
 
@@ -45,6 +61,7 @@ function LocalizacaoImovel({ formData, setFormData }) {
             imovelBairro: enderecoCompleto.data.bairro,
             imovelCidade: enderecoCompleto.data.localidade,
             imovelEndereco: enderecoCompleto.data.logradouro,
+            imovelEstado: enderecoCompleto.data.uf,
           })
 
           document.getElementById("imovelNumero").focus()
@@ -93,7 +110,15 @@ function LocalizacaoImovel({ formData, setFormData }) {
             </FloatingLabel>
           </Col>
           <Col md>
-            <SelectParametrado metodo="SELECT_ESTADOS" label="Estado" tipoLabel="float"/>
+            <FloatingLabel label="Estado">
+              <Form.Select id="imovelUF" value={formData.imovelEstado} 
+                onChange={(event) => setFormData({...formData, imovelEstado: event.target.value })}>
+                  <option value="0" selected>Selecione...</option>
+                  {retornoAPI.map(retornoAPI => 
+                      <option value={retornoAPI.Sigla}>{retornoAPI.Descricao}</option>
+                  )} 
+              </Form.Select>
+            </FloatingLabel>
           </Col>
         </Row>
         <br />

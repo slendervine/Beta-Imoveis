@@ -17,6 +17,9 @@ function MinhaNavBar() {
                     <NavDropdown.Item href="/consulta_imoveis">
                         Imoveis
                     </NavDropdown.Item>
+                    <NavDropdown.Item href="/consulta_usuarios">
+                        Usuários
+                    </NavDropdown.Item>
                 </NavDropdown>
 
                 <NavDropdown title="Cadastrar" id="basic-nav-dropdown">
