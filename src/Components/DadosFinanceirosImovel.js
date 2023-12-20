@@ -20,17 +20,16 @@ function formaContatoImovel(id, value, formData, setDescInputTipoImovel){
         placeholder = "";
     }
 
-    formData.ID_formaContatoImovel = value
-    console.log(formData.ID_formaContatoImovel)
+    formData.ID_formaContatoImovel = value;
   
-    const inputAlterado       = document.querySelector("#Input_formaContatoImovel")
+    const inputAlterado       = document.querySelector("#Input_formaContatoImovel");
   
-    inputAlterado.placeholder = placeholder
+    inputAlterado.placeholder = placeholder;
     inputAlterado.removeAttribute("disabled");
     inputAlterado.focus();
 
 
-    setDescInputTipoImovel(id)
+    setDescInputTipoImovel(id);
   
 }
 
@@ -47,10 +46,9 @@ function DadosFinanceirosImovel({ formData, setFormData }) {
           <FloatingLabel  label="Qual a pretenção para o imovel?">
             <Form.Select id="aluguelOuVendaImovel" aria-label="Qual a pretenção para o imovel?" value={formData.aluguelOuVendaImovel} 
               onChange={(event) => setFormData({...formData, aluguelOuVendaImovel: event.target.value })}>
-              <option>Selecione...</option>
+              <option value="0">Selecione...</option>
               <option value="1">Locação</option>
               <option value="2">Venda</option>
-              <option value="3">Ambos</option>
             </Form.Select>
           </FloatingLabel>
         </Col>
@@ -62,8 +60,8 @@ function DadosFinanceirosImovel({ formData, setFormData }) {
         <Col md>
           <InputGroup className="mb-3">
             <InputGroup.Text>R$</InputGroup.Text>
-            <Form.Control id="valorExibidoSite" placeholder="Valor do imóvel." value={formData.valorExibidoSite} 
-              onChange={(event) => setFormData({...formData, valorExibidoSite: event.target.value })} 
+            <Form.Control id="valorImovel" placeholder="Valor do imóvel." value={formData.valorImovel} 
+              onChange={(event) => setFormData({...formData, valorImovel: event.target.value })} 
               as={InputMask}
               mask="9.999,99"/>
           </InputGroup>

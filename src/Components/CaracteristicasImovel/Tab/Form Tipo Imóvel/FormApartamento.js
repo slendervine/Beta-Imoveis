@@ -1,5 +1,6 @@
 import { Form, Row, Col, InputGroup, Container} from 'react-bootstrap';
 import React, { useState } from 'react';
+import SelectParametrado from '../../../../Options/SelectParametrado';
 
 
 
@@ -28,28 +29,7 @@ function FormApartamento({ formData, setFormData }) {
         <>     
             <Row>
                 <Col>
-                    <Form.Label>Nome do Prédio</Form.Label>
-                    <Form.Control id="nomePredio" aria-label="Text input with checkbox" value={formData.nomePredio} 
-                        onChange={(event) => setFormData({...formData, nomePredio: event.target.value })}
-                        disabled    = {formData.checkboxCondominio} 
-                        placeholder = "Ex: Mar Ligúria"
-                    />                
-                </Col>
-
-                <Col>
-                    <Form.Label>Condomínio</Form.Label>
-                    <InputGroup className="mb-3">
-                        <InputGroup.Checkbox id="checkCondominio" aria-label="Checkbox for following text input"
-                            onChange={ (e) => alteraCheckboxCondominio(e.target.checked) }
-                            checked = {formData.checkboxCondominio}
-                        />
-
-                        <Form.Control id="nomeCondominio" aria-label="Text input with checkbox" value={formData.nomeCondominio}
-                            onChange={(event) => setFormData({...formData, nomeCondominio: event.target.value })}
-                            disabled    = {!formData.checkboxCondominio} 
-                            placeholder = "Ex: Condomínio Palaza"
-                        />                
-                    </InputGroup>
+                    <SelectParametrado metodo="SELECT_CONDOMINIOS" label="Condomínio" tipoLabel="normal" value={formData.idCondominio} setFormData={setFormData} formData={formData} />
                 </Col>
             </Row>
             
@@ -72,7 +52,7 @@ function FormApartamento({ formData, setFormData }) {
                         id="checkPiscina"
                         onChange={(event) => setFormData({...formData, checkPiscina: event.target.checked })}
                         checked = {formData.checkPiscina}
-                        />
+                    />
                 </Col>
 
                 <Col>

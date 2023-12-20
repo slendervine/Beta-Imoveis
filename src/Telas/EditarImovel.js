@@ -178,7 +178,7 @@ function EditarImovel() {
 
                         
                         <Card className="mt-3 mb-3">
-                            <Card.Header as="h5" className="text-center">Condomínio/Prédio</Card.Header>
+                            <Card.Header as="h5" className="text-center">Condomínio</Card.Header>
                             <Card.Body>
 
                             <Form.Group className="mb-1 mt-1">

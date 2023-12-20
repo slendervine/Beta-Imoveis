@@ -2,10 +2,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 import { Form, FloatingLabel, Row, Col, Button } from 'react-bootstrap';
 import { getCep } from '../api/getCep';
-import { getEstados } from '../api/getEstados';
 import { useEffect } from 'react';
 import api from '../services/api';
-import SelectParametrado from '../Options/SelectParametrado';
 import React from 'react';
 
 
@@ -32,7 +30,6 @@ function LocalizacaoImovel({ formData, setFormData }) {
 
     async function buscaCEP(cep){
 
-      
       cep = cep.replace('-', '')
       //setFormData({...formData, imovelCep: cep })
       

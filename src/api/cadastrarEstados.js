@@ -1,7 +1,7 @@
    
    //Função utilizada para cadastrar os Estados no SQL Server
    
-   async function cadastraEstados(){
+    async function cadastraEstados(){
 
         const todosEstados = await getEstados();
 

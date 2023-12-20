@@ -19,7 +19,18 @@ function MeuForm(){
         titleFormaContatoImovel: "Contato",
         nomePredio: "",
         nomeCondominio: "",
-        checkboxCondominio: false
+        checkboxCondominio: false,
+        aluguelOuVendaImovel: 0,
+        valorImovel: "",
+        valorMinimo: "",
+        Input_nomeContatoImovel: "",
+        obsFinanceiras: "",
+        formSobreImovel: 0,
+        idCondominio: 0
+
+
+
+
     });
     
     const [post, setPost]           = React.useState(null);
