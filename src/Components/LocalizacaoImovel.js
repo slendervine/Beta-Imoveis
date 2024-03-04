@@ -31,7 +31,6 @@ function LocalizacaoImovel({ formData, setFormData }) {
     async function buscaCEP(cep){
 
       cep = cep.replace('-', '')
-      //setFormData({...formData, imovelCep: cep })
       
       if(cep.length == 8){
         
